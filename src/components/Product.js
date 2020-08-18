@@ -2,21 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Product.css';
 
-function Product({  }) {
+function Product({title, price, img  }) {
   return (
     <div className="product">
-      <strong>Jolie Moto</strong>
+      <strong>{title}</strong>
 
-      <p>5.44euro</p>
-      <img className="product__img" src="https://pixabay.com/get/53e6dc4b4c57b10ff3d89960c62d3e79123ad9e75154_640.jpg" alt="" />
+      <p>{price}</p>
+      <img className="product__img" src={img} alt="" />
       <button className="btn-basket">Ajouter au panier</button>
     </div>
   );
 }
 
-Product.defaultProps = {};
+Product.defaultProps = {
+  title:'Produit à vendre',
+  price:99.99,
+  img:'https://www.argentwebmarketing.com/wp-content/uploads/2013/01/quoi-vendre-sur-internet.jpg',
+};
 
 Product.propTypes = {
+  title:PropTypes.string,
+  price:PropTypes.number,
+  img:PropTypes.string,
 };
 
 export default Product;
