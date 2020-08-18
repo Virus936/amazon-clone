@@ -22,7 +22,7 @@ function Header({  }) {
 
       { /* navbar */ }
      <div className="header__nav">
-       <Link to='/' className="header__link">
+       <Link to='/login' className="header__link">
          <div className="header__option">
            <span>Hello Vira</span>
            <span>Compte et listes</span>

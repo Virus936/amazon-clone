@@ -1,0 +1,20 @@
+.home{
+    max-width: 1200px;
+    margin:auto;
+    position:relative;
+}
+
+.home__image{
+    display:block;
+    width:100%;
+    mask-image: linear-gradient(rgba(0, 0, 0, 1.0),rgba(0,0,0,1) 70%, transparent);
+}
+
+.home__content{
+    position:relative;
+    top: -200px;
+    display:grid;
+    padding: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px; 
+}
