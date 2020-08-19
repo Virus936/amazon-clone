@@ -1,0 +1,13 @@
+.checkout{
+    max-width: 1200px;
+    margin:auto;
+    position:relative;
+    padding-top: 20px;
+
+}
+
+.checkout__product{
+    background-color: #fff;
+    margin-top: 10px;
+    box-shadow: 0 0 1em rgba(0,0,0,0.1)
+}

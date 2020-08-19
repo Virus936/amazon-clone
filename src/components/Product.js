@@ -1,16 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Product.css";
+import { useStateValue } from '../StateProvider';
 
-function Product({ title, price, img }) {
+function Product({ id, title, price, image }) {
+  const [{ basket }, dispatch] = useStateValue();
+  const addToBasket = () => {
+    dispatch({
+      type:'ADD_TO_BASKET',
+      item:{
+        id,
+        title,
+        image,
+        price,
+      }
+    })
+  }
+  
   return (
-    <div className="product">
-      <strong>{title}</strong>
+      <div className="product">
+        <strong>{title}</strong>
 
-      <p>{price}</p>
-      <img className="product__img" src={img} alt="" />
-      <button className="btn-basket">Ajouter au panier</button>
-    </div>
+        <p>{price}</p>
+        <img className="product__img" src={image} alt="" />
+        <button onClick={ addToBasket } className="btn-basket">Ajouter au panier</button>
+      </div>
   );
 }
 
@@ -24,7 +38,7 @@ Product.defaultProps = {
 Product.propTypes = {
   title: PropTypes.string,
   price: PropTypes.number,
-  img: PropTypes.string
+  image: PropTypes.string
 };
 
 export default Product;

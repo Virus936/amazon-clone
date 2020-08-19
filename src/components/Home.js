@@ -27,12 +27,15 @@ const HomeContent = () => {
   return (
     <div className="home">
       <img className="home__image" src={AMAZONS_BANNER} alt="amazon_bannière" />
+
       <div className="home__content">
+        {/* liste des produits */}
         {products.map(product => (
           <Product
             key={product.id}
+            id={product.id}
             title={product.title}
-            img={product.image}
+            image={product.image}
             price={product.price}
           />
         ))}

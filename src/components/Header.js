@@ -39,7 +39,7 @@ const SearchBar = () => {
 const NavBar = () => {
   return (
     <>
-      <NavElement to="/" bigtitle="Hello Vira" smalltitle="Compte et Listes" />
+      <NavElement to="/" bigtitle={ `Hello Vira` } smalltitle="Compte et Listes" />
       <NavElement to="/login" bigtitle="Retours" smalltitle="et Commandes" />
       <NavElement to="/" bigtitle="Votre" smalltitle="Prime" />
       <Basket />
@@ -61,10 +61,10 @@ const NavElement = ({ to, bigtitle, smalltitle }) => {
 const Basket = () => {
   const [{ basket }, dispatch] = useStateValue();
   return (
-    <Link to="/" className="header__link">
+    <Link to="/checkout" className="header__link">
       <div className="header__optionbasket">
         <ShoppingBasketOutlinedIcon className="header__basket" />
-        <span> {basket.length} </span>
+        <span> {basket?.length} </span>
       </div>
     </Link>
   );
