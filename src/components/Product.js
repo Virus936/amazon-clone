@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Product.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Product.css";
 
-function Product({title, price, img  }) {
+function Product({ title, price, img }) {
   return (
     <div className="product">
       <strong>{title}</strong>
@@ -15,15 +15,16 @@ function Product({title, price, img  }) {
 }
 
 Product.defaultProps = {
-  title:'Produit à vendre',
-  price:99.99,
-  img:'https://www.argentwebmarketing.com/wp-content/uploads/2013/01/quoi-vendre-sur-internet.jpg',
+  title: "Produit à vendre",
+  price: 99.99,
+  img:
+    "https://www.argentwebmarketing.com/wp-content/uploads/2013/01/quoi-vendre-sur-internet.jpg"
 };
 
 Product.propTypes = {
-  title:PropTypes.string,
-  price:PropTypes.number,
-  img:PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+  img: PropTypes.string
 };
 
 export default Product;
