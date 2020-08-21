@@ -11,10 +11,14 @@
 .checkout__product{
     background-color: #fff;
     margin-top: 10px;
-    box-shadow: 0 0 1em rgba(0,0,0,0.1)
+    box-shadow: 0 0 1em rgba(0,0,0,0.1);
+    max-width:100%;
 }
 
 
+.checkout__product img{
+    max-width:100%
+}
 .checkout__total{
     box-shadow: 0 0 1em rgba(0,0,0,0.1);
     padding : 10px;

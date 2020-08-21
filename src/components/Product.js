@@ -5,11 +5,13 @@ import { useStateValue } from '../StateProvider';
 
 function Product({ id, title, price, image }) {
   const [{ basket }, dispatch] = useStateValue();
+  
   const addToBasket = () => {
     dispatch({
       type:'ADD_TO_BASKET',
       item:{
-        id,
+        id:Date.now(),
+        productid:id,
         title,
         image,
         price,

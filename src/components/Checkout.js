@@ -4,6 +4,8 @@ import "./Checkout.css";
 import Header from "./Header";
 import { useStateValue } from "../StateProvider";
 
+
+
 function Checkout({}) {
   return (
     <>
@@ -11,16 +13,6 @@ function Checkout({}) {
       <CheckoutContent />
     </>
   );
-}
-
-const CheckoutTotal = () => {
-  const [{ basket }] = useStateValue();
-  return (
-    <div className="checkout__total">
-      <h2>Total de vos commandes</h2>
-      <p><strong>prix total :</strong> { basket?.length === 0 ? 0 :  basket.reduce( (a,b) => a + b.price, 0 )}</p>
-    </div>
-  )
 }
 
 const CheckoutContent = () => {
@@ -32,8 +24,27 @@ const CheckoutContent = () => {
   );
 };
 
-const CheckoutListProduct = () => {
+const CheckoutTotal = () => {
   const [{ basket }] = useStateValue();
+  return (
+    <div className="checkout__total">
+      <h2>Total de vos commandes</h2>
+      <p><strong>prix total :</strong> { basket?.length === 0 ? 0 :  basket.reduce( (a,b) => a + b.price, 0 )}</p>
+    </div>
+  )
+}
+
+const CheckoutListProduct = () => {
+  const [{ basket }, dispatch] = useStateValue();
+
+  const removeFromBasket = (id) => {
+    dispatch( {
+      type: "REMOVE_FROM_BASKET",
+      item: {
+        id,
+      }
+    } );
+  };
   return basket?.length === 0 ? (
     <div>
       <h2>panier vide</h2>
@@ -44,31 +55,25 @@ const CheckoutListProduct = () => {
         <CheckoutProduct
           key={product.id}
           id={product.id}
+          productid={product.productid}
           title={product.title}
           price={product.price}
           image={product.image}
+          removeFromBasket={removeFromBasket}
         />
       ))}
     </div>
   );
 };
 
-const CheckoutProduct = ({ id, title, price, image }) => {
-  const [{ basket }, dispatch] = useStateValue();
-  const removeFromBasket = () => {
-    dispatch({
-      type: "REMOVE_FROM_BASKET",
-      item: {
-        id,
-      }
-    });
-  };
+const CheckoutProduct = ({ id, title, price, image, removeFromBasket }) => {
+
   return (
-    <div className="checkout__product">
+    <div className="checkout__product" >
       <img src={image} alt="image_de_mon_produit" />
       <strong>{title}</strong>
       <p>{price}</p>
-      <button onClick={removeFromBasket}>Enlever du panier</button>
+      <button onClick={() => removeFromBasket(id)}>Enlever du panier</button>
     </div>
   );
 };
