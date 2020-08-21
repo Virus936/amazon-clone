@@ -1,7 +1,7 @@
 export const initialState = { basket: [] };
 
 function reducer(state, action) {
-
+  console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
       return {
@@ -9,7 +9,7 @@ function reducer(state, action) {
         basket: [ ...state.basket, action.item ],
       }
     case "REMOVE_FROM_BASKET":
-      return state;
+      return { ...state };
     default:
       return state;
   }

@@ -13,10 +13,21 @@ function Checkout({}) {
   );
 }
 
+const CheckoutTotal = () => {
+  const [{ basket }] = useStateValue();
+  return (
+    <div className="checkout__total">
+      <h2>Total de vos commandes</h2>
+      <p><strong>prix total :</strong> { basket?.length === 0 ? 0 :  basket.reduce( (a,b) => a + b.price, 0 )}</p>
+    </div>
+  )
+}
+
 const CheckoutContent = () => {
   return (
     <div className="checkout">
       <CheckoutListProduct />
+      <CheckoutTotal/>
     </div>
   );
 };
@@ -49,9 +60,6 @@ const CheckoutProduct = ({ id, title, price, image }) => {
       type: "REMOVE_FROM_BASKET",
       item: {
         id,
-        title,
-        image,
-        price
       }
     });
   };

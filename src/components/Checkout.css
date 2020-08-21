@@ -1,9 +1,11 @@
 .checkout{
     max-width: 1200px;
+    display:grid;
     margin:auto;
     position:relative;
     padding-top: 20px;
-
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
 }
 
 .checkout__product{
@@ -11,3 +13,10 @@
     margin-top: 10px;
     box-shadow: 0 0 1em rgba(0,0,0,0.1)
 }
+
+
+.checkout__total{
+    box-shadow: 0 0 1em rgba(0,0,0,0.1);
+    padding : 10px;
+}
+
