@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./Checkout.css";
 import Header from "./Header";
 import { useStateValue } from "../StateProvider";
-
+import CurrencyFormat from 'react-currency-format';
 
 
 function Checkout({}) {
@@ -26,11 +26,14 @@ const CheckoutContent = () => {
 
 const CheckoutTotal = () => {
   const [{ basket }] = useStateValue();
+  const soustotal =  basket?.length === 0 ? 0 :  basket.reduce( (a,b) => a + b.price, 0 )
   return (
     <div className="checkout__total">
       <div className="sticky">
         <h2>Total de vos commandes</h2>
-        <p><strong>prix total :</strong> { basket?.length === 0 ? 0 :  basket.reduce( (a,b) => a + b.price, 0 )}</p>
+        <p><strong>prix total :</strong>
+          <CurrencyFormat value={soustotal} displayType={'text'} suffix={'€'}/>
+        </p>
       </div>
     </div>
   )
@@ -76,7 +79,9 @@ const CheckoutProduct = ({ id, title, price, image, removeFromBasket }) => {
       <img src={image} alt="image_de_mon_produit" />
       <div className="checkout__product_info">
         <strong>{title}</strong>
-        <p>{price}</p>
+        <p>
+          <CurrencyFormat value={price} displayType={'text'} suffix={'€'}/>
+        </p>
         <button onClick={() => removeFromBasket(id)}>Enlever du panier</button>
       </div>
     </div>

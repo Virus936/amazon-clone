@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Product.css";
 import { useStateValue } from '../StateProvider';
+import CurrencyFormat from 'react-currency-format';
 
 function Product({ id, title, price, image }) {
   const [{ basket }, dispatch] = useStateValue();
@@ -23,7 +24,9 @@ function Product({ id, title, price, image }) {
       <div className="product">
         <strong>{title}</strong>
 
-        <p>{price}</p>
+        <p>
+          <CurrencyFormat value={price} displayType={'text'} suffix={'€'}/>
+        </p>
         <img className="product__img" src={image} alt="" />
         <button onClick={ addToBasket } className="btn-basket">Ajouter au panier</button>
       </div>
