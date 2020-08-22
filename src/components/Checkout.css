@@ -4,7 +4,7 @@
     margin:auto;
     position:relative;
     padding-top: 20px;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
 
@@ -13,14 +13,26 @@
     margin-top: 10px;
     box-shadow: 0 0 1em rgba(0,0,0,0.1);
     max-width:100%;
+    display:grid;
+    grid-template-columns: 1fr 3fr;
 }
-
 
 .checkout__product img{
-    max-width:100%
+    display: block;
+    height:100px;
 }
+
+.checkout__product__info{
+
+}
+
 .checkout__total{
     box-shadow: 0 0 1em rgba(0,0,0,0.1);
     padding : 10px;
 }
 
+.sticky{
+
+    position: sticky;
+    top: 20px;
+}
